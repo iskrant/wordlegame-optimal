@@ -1,2 +1,52 @@
 # wordlegame-optimal
 a script for optimal search of the initial combinations of words of the game "wordlegame"
+
+The game like this:
+https://wordlegame.org/ru
+
+The RU nouns dictionary: https://github.com/Harrix/Russian-Nouns/blob/main/dist/russian_nouns.txt
+
+
+AWK как-будто быстрее :-)
+Но можете попробовать сами на своей машине.
+
+# prepare:
+install awk or luajit
+
+```apt install luajit,luarocks
+luarocks install luautf8
+```
+or
+
+```apt install gawk```
+
+or something like this for your distributive;
+
+if you want, you are able to use another dictionary, and prepare them to usage by dic-filter-Nletters.sh script for your letters quantity;
+
+# usage:
+```
+./wordlegame-optimal.awk 6-russian_nouns.txt  6 3 20 0
+
+./wordlegame-optimal.awk 7-russian_nouns.txt  7 4 20 1
+```
+
+Параметры:
+```
+
+   ARGV[1] — файл словаря (по одному слову в строке)
+   ARGV[2] (опционально) — длина слов N (по умолчанию определяется по первому слову)
+   ARGV[3] (опционально) — количество слов в комбинации NUM_WORDS (по умолчанию 3)
+   ARGV[4] (опционально) — количество комбинаций для вывода MAX_OUTPUT (по умолчанию 15)
+   ARGV[5] (опционально) — допустимое количество уникальных повторяющихся букв ALLOWED_DUPLICATES (по умолчанию 0)
+ При каждом запуске случайно выбирает точку старта в словаре.
+```
+# Забавные:
+## 7 :
+```
+ягодица орешина осьмуха толпища чижовка
+
+биограф блиндаж выписка зайчище мутация
+
+негодяй отъёмыш сухолюб щиповка
+```
